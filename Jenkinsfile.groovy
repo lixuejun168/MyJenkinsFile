@@ -1,10 +1,15 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'mvn-3.3.3'
+    }
+
     stages {
-        stage('begin'){
+        stage('Build'){
             steps {
-                echo 'hello pipeline begin'
+                sh "mvn clean package spring--boot:repackage"
+                sh "printenv"
             }
         }
         
