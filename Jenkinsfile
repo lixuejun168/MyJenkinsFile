@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-          node{
-              label 'master'
-              customWorkspace "pipelineWorkspace"
-          }
-
-    }
+    agent any
 
     stages {
         stage('begin'){
@@ -13,30 +7,12 @@ pipeline {
                 echo 'hello pipeline begin'
             }
         }
-        stage('running'){
-            steps {
-                echo 'hello pipeline running'
-            }
-        }
-        stage('finish'){
-            steps {
-                echo 'hello pipeline finish'
-                sh 'exit -1'
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'goodbye pipeline success!'
-        }
-
-        failure {
-            echo 'ops!!! pipeline failed....'
-        }
-
-        always {
-            echo 'always say goodbye'
-        }
-    }
+        
+    } 
 }
+
+git@github.com:lixuejun168/MyJenkinsFile.git
+
+git([url: 'git@github.com:lixuejun168/iTest.git', branch: 'master'])
+
+sh "mvn clean package spring--boot:repackage"
