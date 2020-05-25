@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-                git([url: 'https://lixuejun168:MAOjian166268@github.com/lixuejun168/iTest.git', branch: 'master'])
+                git([url: 'git@github.com:lixuejun168/iTest.git', branch: 'master'])
                 sh 'printenv'
                 sh "pwd"
                 sh "mvn clean install test"
