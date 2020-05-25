@@ -12,7 +12,7 @@ pipeline {
             steps {
 
                 withCredentials(bindings: [sshUserPrivateKey(credentialsId: '169', \
-                           keyFileVariable: 'key')]) { echo ${key}
+                           keyFileVariable: 'key')]) {
                 }
                 git([url: 'git@github.com:lixuejun168/iTest.git', branch: 'master'])
                 sh "mvn clean install test"
