@@ -8,12 +8,12 @@ pipeline {
     stages {
         
         stage('Build'){
+            environment {
+                BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-common-creds')
+            }
             
             steps {
 
-                withCredentials(bindings: [sshUserPrivateKey(credentialsId: '169', \
-                           keyFileVariable: 'key')]) {
-                }
                 git([url: 'git@github.com:lixuejun168/iTest.git', branch: 'master'])
                 sh "mvn clean install test"
             }
