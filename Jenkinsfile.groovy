@@ -13,10 +13,11 @@ pipeline {
                 sh "pwd"
                 sh "mvn clean install test"
             }
-        }
-        post {
-            always {
-                junit testResults: "**/target/surefire-reports/*.xml"
+
+            post {
+                always {
+                    junit testResults: "**/target/surefire-reports/*.xml"
+                }
             }
         }
         
