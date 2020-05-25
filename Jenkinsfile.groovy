@@ -12,11 +12,9 @@ pipeline {
             steps {
 
                 withCredentials(bindings: [sshUserPrivateKey(credentialsId: '169', \
-                           keyFileVariable: 'SSH_KEY_FOR_iTest')]) {
+                           keyFileVariable: 'key')]) { echo ${key}
                 }
                 git([url: 'git@github.com:lixuejun168/iTest.git', branch: 'master'])
-                sh 'printenv'
-                sh "pwd"
                 sh "mvn clean install test"
             }
 
