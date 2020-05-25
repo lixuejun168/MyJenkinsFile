@@ -9,7 +9,7 @@ pipeline {
         
         stage('Build'){
             environment {
-                BITBUCKET_COMMON_CREDS = credentials('jenkins-bitbucket-common-creds')
+                BITBUCKET_COMMON_CREDS = credentials('git_hub')
             }
             
             steps {
