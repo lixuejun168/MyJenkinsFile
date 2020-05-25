@@ -8,10 +8,7 @@ pipeline {
     stages {
         
         stage('Build'){
-            environment {
-                BITBUCKET_CREDS = credentials('jenkins-bitbucket-creds')
-            }
-            
+
             steps {
 
                 git([url: 'git@github.com:lixuejun168/iTest.git', branch: 'master'])
