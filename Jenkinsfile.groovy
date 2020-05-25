@@ -6,11 +6,11 @@ pipeline {
     }
 
     stages {
+        
         stage('Build'){
-            withCredentials([sshUserPrivateKey(
-                keyFileVariable:"key",
-                credentialsId:"169"
-            )])
+            withCredentials(bindings: [sshUserPrivateKey(credentialsId: '169', \
+                           keyFileVariable: 'SSH_KEY_FOR_iTest')]) {
+                }
             steps {
                 git([url: 'git@github.com:lixuejun168/iTest.git', branch: 'master'])
                 sh 'printenv'
